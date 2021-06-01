@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loginAction } from '../Redux/actions/authAction';
+import { authAction } from '../Redux/actions/authAction';
 
 class Form extends React.Component {
   render() {
@@ -24,7 +24,7 @@ class Form extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  auth: () => dispatch(loginAction())
+  auth: () => dispatch(authAction())
 })
 
 export default connect(null, mapDispatchToProps)(Form);
