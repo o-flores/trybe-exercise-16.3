@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { loginAction } from '../Redux/actions/authAction';
 
 class Form extends React.Component {
   render() {
+    const { auth } = this.props;
     return (
       <form>
         <label htmlFor='email'>
@@ -14,10 +17,14 @@ class Form extends React.Component {
           <input name='password' type='password'></input>
         </label>
 
-        <button type='button'>Entrar</button>
+        <button onClick={ () => auth() } type='button'>Entrar</button>
       </form>
     )
   }
 }
 
-export default Form;
+const mapDispatchToProps = (dispatch) => ({
+  auth: () => dispatch(loginAction())
+})
+
+export default connect(null, mapDispatchToProps)(Form);
