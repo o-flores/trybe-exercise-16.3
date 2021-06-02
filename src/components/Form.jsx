@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { authAction } from '../Redux/actions/authAction';
+import { Link } from 'react-router-dom';
 
 class Form extends React.Component {
   constructor() {
@@ -32,7 +33,7 @@ class Form extends React.Component {
           <input onChange={ this.handleChange } name='password' type='password'></input>
         </label>
 
-        <button onClick={ () => auth({email, password}) } type='button'>Entrar</button>
+        <Link to='/clients' onClick={ () => auth({email, password}) } type='button'>Entrar</Link>
       </form>
     )
   }
