@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { deleteAction } from '../Redux/actions/deleteAction';
 import { Link } from 'react-router-dom';
 
 class Clients extends React.Component {
@@ -22,6 +23,7 @@ class Clients extends React.Component {
           <p>Nome: {item.name}</p>
           <p>Idade: {item.age}</p>
           <p>Email: {item.email}</p>
+          <button onClick={() => this.props.delete(item) } type='button'>X</button>
         </div>
       )
     })
@@ -63,8 +65,12 @@ class Clients extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  delete: (value) => dispatch(deleteAction(value))
+})
 const mapStateToProps = (state) => ({
   login: state.authReducer.authentication,
   registers: state.registerReducer.users,
 })
-export default connect(mapStateToProps, null)(Clients);
+export default connect(mapStateToProps, mapDispatchToProps)(Clients);
